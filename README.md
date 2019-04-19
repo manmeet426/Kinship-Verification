@@ -1,6 +1,10 @@
 # Kinship-Verification
 Neural network project
 
+Link to Demo video on Youtube : https://www.youtube.com/watch?v=W4XAuGpUA_M&feature=youtu.be
+
+Link to github webpage : https://github.com/manmeet426/Kinship-Verification
+
 Kinship Verification via facial images is an emerging research topic in the field of biometrics, pattern recognition and computer vision. It is motivated by the findings that individuals with some genetic relations have certain similarities in their facial appearances. These similarities in the facial appearance is a result of inherited facial features from one generation to the next generation, especially from parents to children.
 Approach: 
 For performing kinship verification we deploy a convoluted neural network which takes a pair of images as input and outputs the probability of these images belonging to one of four classes given by father-daughter, father-son, mother-daughter and mother-son. 
