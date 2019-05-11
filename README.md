@@ -1,6 +1,58 @@
 # Kinship-Verification
 Neural network project
 
+How to run the code for training and testing the neural network.
+
+The code repository can be found at the following github link.
+Github Link : 
+https://github.com/manmeet426/Kinship-Verification
+
+The datasets KinFaceW-I and KinFaceW-II are located in the file system and contain their own separate readme files.
+The main code for the neural network as well as the GUI is contained in NN_project.ipynb
+The load data function loads the files(images) from all the classes (f-d, f-s, m-d, m-s), prepares labels for the same and calls import_dir which performs the function to merge the parent and child images into a single image as required for input to the model.
+It returns all images from all folders into parent-child image form.
+
+
+Import_dir function reads all files(images) for a given directory (say father-dau) and combines parent-child images to form a single 6 channel image which is used as input for the proposed model. The start variable is required to skip any thumbs.db file that may be present in the folder containing the images. It return parent-child images for the given directory.
+
+Now, using the KinFaceW-II dataset, we load the train data and labels in the input format required by the model (parent-child combination 6-channel image).
+Further, we combine the train_data from different class folders (father-daughter, father-son, mother-daughter, mother-son) into a single variable to pass to the input of the neural net.
+
+We do a similar procedure for the test data and test labels using the KinFaceW-I dataset.
+
+We then convert the labels into categorical form for the multi-class classification task.
+
+Now, for the proposed model, we prepare the data generator for data augmentation.
+
+We then fit the model with the augmented train data to get the training accuracy as stated above. 
+We evaluate the performance of the  model using the accuracy on the test data which is shown above.
+
+ the above model is saved as ‘model_with_data_augmentation’ in the same root file structure.
+
+model.save("model_with_data_augmentation")
+	
+The model can be re-loaded using the following code and run again to calculate the accuracy.
+
+models.load_model("model_with_data_augmentation")
+
+
+
+
+How to use the GUI?
+
+The NN_project.ipynb file contains the code for the GUI at the end. It describes the function performed by the GUI.
+
+The 2 upload buttons allow the user to upload input images for the classification task. Once the user clicks submit, the GUI code transforms the uploaded images into the parent-child format required for the model input.
+The code calls the model’s predict classes function to obtain the prediction for the uploaded images.
+The resulting class is displayed in a separate dialog box.
+
+The following video shows a demonstration on how to use the GUI for uploading the input images and viewing the result.
+
+
+Link to Demo video on Youtube : https://www.youtube.com/watch?v=W4XAuGpUA_M&feature=youtu.be
+
+Link to github webpage : https://github.com/manmeet426/Kinship-Verification
+
 Kinship Verification via facial images is an emerging research topic in the field of biometrics, pattern recognition and computer vision. It is motivated by the findings that individuals with some genetic relations have certain similarities in their facial appearances. These similarities in the facial appearance is a result of inherited facial features from one generation to the next generation, especially from parents to children.
 Approach: 
 For performing kinship verification we deploy a convoluted neural network which takes a pair of images as input and outputs the probability of these images belonging to one of four classes given by father-daughter, father-son, mother-daughter and mother-son. 
