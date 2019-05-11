@@ -176,4 +176,49 @@ o/p:     533/533 [==============================] - 2s 4ms/step
 
 [2.661236596319957, 0.4915572347549292]
 
+Thus, the accuracy obtained from this model is 49.15%.
+
+
+Improvements: 
+
+In order to improve the performance accuracy, I performed the following changes.
+
+Added Batch normalization for each layer.
+Experimented with different activation functions for each layer. 
+
+After doing these modifications, the accuracy obtained on the training set (KinFaceW-II) are as follows.
+
+Epoch 1/10
+1000/1000 [==============================] - 965s 965ms/step - loss: 0.4201 - acc: 0.8032
+Epoch 2/10
+1000/1000 [==============================] - 1541s 2s/step - loss: 0.2669 - acc: 0.8818
+Epoch 3/10
+1000/1000 [==============================] - 533s 533ms/step - loss: 0.1725 - acc: 0.9291
+Epoch 4/10
+1000/1000 [==============================] - 533s 533ms/step - loss: 0.1168 - acc: 0.9539
+Epoch 5/10
+1000/1000 [==============================] - 584s 584ms/step - loss: 0.0901 - acc: 0.9661
+Epoch 6/10
+1000/1000 [==============================] - 520s 520ms/step - loss: 0.0697 - acc: 0.9740
+Epoch 7/10
+1000/1000 [==============================] - 529s 529ms/step - loss: 0.0588 - acc: 0.9792
+Epoch 8/10
+1000/1000 [==============================] - 5059s 5s/step - loss: 0.0568 - acc: 0.9793
+Epoch 9/10
+1000/1000 [==============================] - 840s 840ms/step - loss: 0.0381 - acc: 0.9862
+Epoch 10/10
+1000/1000 [==============================] - 538s 538ms/step - loss: 0.0375 - acc: 0.9872
+
+
+The new accuracy obtained on the test set (KinFaceW-I) is obtained by
+
+i/p : model.evaluate(test_img/255, test_labels_cat, batch_size=15)
+
+o/p:     533/533 [==============================] - 4s 7ms/step
+
+[1.141733029993569, 0.7528142565634193]
+
+
+Thus, the accuracy improved to 75.28% which is comparable with the baseline accuracy as stated in http://www.bmva.org/bmvc/2015/papers/paper148/paper148.pdf.
+
 
